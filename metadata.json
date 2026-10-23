@@ -1,0 +1,6 @@
+{
+  "name": "KaziRemote",
+  "description": "A remote job marketplace connecting African professionals with global remote opportunities, featuring one-time M-Pesa enrollment, curated listings, and verified hiring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

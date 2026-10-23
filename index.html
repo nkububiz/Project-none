@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KaziRemote — Remote jobs for African talent</title>
+  <meta name="description" content="A remote job marketplace connecting African professionals with global remote opportunities, featuring one-time M-Pesa enrollment, curated listings, and verified hiring." />
+  <meta property="og:title" content="KaziRemote — Remote jobs for African talent" />
+  <meta property="og:description" content="A remote job marketplace connecting African professionals with global remote opportunities, featuring one-time M-Pesa enrollment, curated listings, and verified hiring." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("kazi:theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>K</text></svg>" />
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container" style="padding-top:16px">
+      <div class="hotline-banner">
+        <div>
+          <strong>🇰🇪 🇳🇬 🇬🇭 🇷🇼 Pan-African Remote Marketplace</strong>
+          <span class="muted" style="margin-left:6px">Verified M-Pesa Till 4374253 · Support Hotline &amp; WhatsApp: <strong>0183 036 639</strong></span>
+        </div>
+        <div class="hotline-links">
+          <a class="hotline-pill" href="tel:0183036639">📞 0183 036 639</a>
+          <a class="hotline-pill" style="background:#22c55e" href="https://wa.me/254183036639?text=Hi%20KaziRemote%20Support" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero" style="padding-top:12px">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> <span id="live-count">Unlimited</span> remote roles hiring now</span>
+          <h1>Work for the world, <span class="underline">from home.</span></h1>
+          <p class="lead">KaziRemote connects ambitious African professionals with companies hiring remotely. Enroll once with M-Pesa, then apply to every role you qualify for.</p>
+          <form class="search-bar" action="/jobs.html">
+            <label class="sr-only" for="hero-q">Search jobs</label>
+            <input id="hero-q" name="q" type="search" placeholder="Job title, skill or company…" />
+            <button class="btn btn-primary" type="submit">Search jobs</button>
+          </form>
+          <div class="activity-ticker-wrap">
+            <span class="live-pulse-dot"></span>
+            <span id="hero-activity">Live: Loading recent hiring activity...</span>
+          </div>
+          <div class="hero-stats">
+            <div><strong>1,200+</strong><span>Enrolled seekers</span></div>
+            <div><strong>180</strong><span>Hiring companies</span></div>
+            <div><strong>48 hrs</strong><span>Avg. first response</span></div>
+          </div>
+        </div>
+        <div class="hero-card-stack" id="hero-stack"></div>
+      </div>
+    </section>
+
+    <section style="padding-top:24px">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Browse by category</h2><p>From engineering to virtual assistance — all 100% remote.</p></div>
+        </div>
+        <div class="cat-grid" id="cat-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Featured roles</h2><p>Hand-picked by our team this week.</p></div>
+          <a class="btn btn-ghost" href="/jobs.html">View all jobs →</a>
+        </div>
+        <div class="job-list" id="featured-list"></div>
+      </div>
+    </section>
+
+    <!-- Success Stories & Testimonials -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="badge badge-brand">Hired on KaziRemote</span>
+            <h2 style="margin-top:10px">Real people. Real remote salaries.</h2>
+            <p>From Nairobi to Lagos, meet African talent working for global teams without middlemen.</p>
+          </div>
+        </div>
+        <div class="testimonial-grid" id="testimonial-grid"></div>
+      </div>
+    </section>
+
+    <!-- Anti-Scam & Guarantee Section -->
+    <section>
+      <div class="container">
+        <div class="guarantee-box">
+          <div class="guarantee-badge-icon">🛡️</div>
+          <div>
+            <span class="badge badge-verified">Official M-Pesa Till 4374253 · Safaricom Verified</span>
+            <h3 style="font-size:1.6rem;margin:8px 0 6px">Why we charge a one-time KES 500 fee</h3>
+            <p style="color:var(--ink-2);margin-bottom:12px">
+              Most job portals in Africa are flooded with bot resumes, agency spam, and ghost listings. Our one-time verification fee ensures that <strong>100% of applicants are verified, serious candidates</strong>. In return, employers commit to direct interviews with zero agency wage deductions.
+            </p>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:.88rem">
+              <span>✓ <b>Registered Till Name:</b> KAZIREMOTE SERVICES (KENYA)</span>
+              <span>✓ <b>30-Day Money-Back:</b> 100% refund if not satisfied</span>
+              <span>✓ <b>0% Commission:</b> Keep 100% of your earnings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>How KaziRemote works</h2><p>Three steps between you and your next remote role.</p></div></div>
+        <div class="steps">
+          <div class="step"><h3>Sign in with Google</h3><p>One tap, no passwords. Your profile is ready in under a minute.</p></div>
+          <div class="step"><h3>Enroll via M-Pesa</h3><p>Pay a one-time fee to Till <strong>4374253</strong>. Our team verifies your payment and unlocks applications.</p></div>
+          <div class="step"><h3>Apply &amp; get hired</h3><p>Apply to any open role. Employers see only enrolled, serious candidates.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="split-card seekers">
+          <span class="badge badge-brand">For job seekers</span>
+          <h3 style="margin-top:14px">Stop scrolling scam listings.</h3>
+          <ul>
+            <li>Every employer and listing is reviewed by our team</li>
+            <li>One enrollment, unlimited applications</li>
+            <li>Pay locally with M-Pesa — no card needed</li>
+          </ul>
+          <a class="btn btn-primary" href="/enroll.html">Enroll now</a>
+        </div>
+        <div class="split-card employers">
+          <span class="badge badge-accent">For employers</span>
+          <h3 style="margin-top:14px">Hire committed remote talent.</h3>
+          <ul>
+            <li>Post a role in under five minutes</li>
+            <li>Only enrolled candidates can apply — less noise</li>
+            <li>Reach professionals across African time zones</li>
+          </ul>
+          <a class="btn btn-accent" href="/post-job.html">Post a job</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    (function () {
+      const S = KaziStore, K = Kazi;
+      const jobs = S.publicJobs();
+      K.$("#hero-stack").innerHTML = jobs.filter((j) => j.featured).slice(0, 3).map(K.jobCard).join("") +
+        `<div class="pay-badge">📱 <span>Enroll via M-Pesa Till <b>${S.config.TILL_NUMBER}</b> (${S.config.TILL_NAME})</span></div>`;
+      K.$("#featured-list").innerHTML = jobs.filter((j) => j.featured).concat(jobs.filter((j) => !j.featured)).slice(0, 5).map(K.jobCard).join("");
+      K.$("#cat-grid").innerHTML = S.categories.map((c) => {
+        return `<a class="cat" href="/jobs.html?category=${c.id}"><span class="emoji">${c.emoji}</span><strong>${K.esc(c.label)}</strong><span>Unlimited open roles</span></a>`;
+      }).join("");
+
+      // Live activity ticker rotation
+      const activities = S.liveActivities || [];
+      let actIdx = 0;
+      function tickActivity() {
+        if (!activities.length) return;
+        const act = activities[actIdx % activities.length];
+        const el = K.$("#hero-activity");
+        if (el) el.innerHTML = `<strong>Live:</strong> ${K.esc(act.text)} <span style="opacity:.7;font-size:.78rem">· ${act.time}</span>`;
+        actIdx++;
+      }
+      tickActivity();
+      setInterval(tickActivity, 5000);
+
+      // Testimonials render
+      const tGrid = K.$("#testimonial-grid");
+      if (tGrid && S.testimonials) {
+        tGrid.innerHTML = S.testimonials.map((t) => `
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <span class="avatar" style="background:${t.avatarBg};width:42px;height:42px;font-size:1rem">${t.avatar}</span>
+              <div class="testimonial-author">
+                <strong>${K.esc(t.name)}</strong>
+                <span>${K.esc(t.role)} · ${K.esc(t.location)}</span>
+              </div>
+            </div>
+            <p class="testimonial-quote">“${K.esc(t.quote)}”</p>
+            <div class="testimonial-footer">
+              <span class="muted">${K.esc(t.hired)}</span>
+              <span class="testimonial-salary">${K.esc(t.salary)}</span>
+            </div>
+          </div>
+        `).join("");
+      }
+    })();
+  </script>
+</body>
+</html>

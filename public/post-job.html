@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Post a remote job — KaziRemote</title>
+  <meta name="description" content="Reach committed remote professionals across Africa. Post a job on KaziRemote in minutes." />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("kazi:theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>K</text></svg>" />
+</head>
+<body data-page="post">
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <span class="badge badge-accent">For employers · free during launch</span>
+      <h1 style="margin-top:12px">Post a remote job</h1>
+      <p class="muted">Listings go live after a quick review by our team — usually the same day.</p>
+    </div>
+
+    <div class="two-col">
+      <form class="panel" id="job-form" novalidate>
+        <div class="form-grid">
+          <div class="field full"><label for="title">Job title</label><input id="title" name="title" type="text" required placeholder="e.g. Senior Frontend Engineer" /></div>
+          <div class="field"><label for="company">Company name</label><input id="company" name="company" type="text" required placeholder="Your company" /></div>
+          <div class="field"><label for="email">Hiring contact email</label><input id="email" name="email" type="email" required placeholder="hr@company.com" /></div>
+          <div class="field"><label for="category">Category</label><select id="category" name="category"></select></div>
+          <div class="field"><label for="type">Job type</label><select id="type" name="type"></select></div>
+          <div class="field"><label for="location">Location / time zone</label><input id="location" name="location" type="text" placeholder="Remote · Africa timezones" /></div>
+          <div class="field"><label for="salary">Salary range</label><input id="salary" name="salary" type="text" placeholder="$2,000 – $3,000 / mo" /><span class="hint">Listings with salaries get 3× more applicants.</span></div>
+          <div class="field full"><label for="tags">Skills</label><input id="tags" name="tags" type="text" placeholder="React, Figma, SQL" /><span class="hint">Comma-separated, up to 5.</span></div>
+          <div class="field full"><label for="summary">Short summary</label><input id="summary" name="summary" type="text" maxlength="140" placeholder="One line about the role" /></div>
+          <div class="field full"><label for="responsibilities">Responsibilities</label><textarea id="responsibilities" name="responsibilities" placeholder="One per line"></textarea></div>
+          <div class="field full"><label for="requirements">Requirements</label><textarea id="requirements" name="requirements" placeholder="One per line"></textarea></div>
+          <div class="full" style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap">
+            <button type="reset" class="btn btn-ghost">Clear</button>
+            <button type="submit" class="btn btn-accent btn-lg">Submit for review</button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="sticky">
+        <h4 class="muted" style="font-family:var(--font-body);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em">Live preview</h4>
+        <div id="preview"></div>
+        <div class="panel" style="margin-top:16px;padding:20px">
+          <strong style="font-family:var(--font-display)">Why post on KaziRemote?</strong>
+          <div class="perk-list">
+            <div class="perk"><span class="ico">🎯</span><span>Only enrolled, paying candidates can apply — no spam applications.</span></div>
+            <div class="perk"><span class="ico">🌍</span><span>Talent across Kenya, Nigeria, Ghana, Uganda and more.</span></div>
+            <div class="perk"><span class="ico">⚡</span><span>Most roles get their first qualified applicant within 48 hours.</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    (function () {
+      const S = KaziStore, K = Kazi;
+      const form = K.$("#job-form");
+      K.$("#category").innerHTML = S.categories.map((c) => `<option value="${c.id}">${K.esc(c.label)}</option>`).join("");
+      K.$("#type").innerHTML = S.types.map((t) => `<option>${t}</option>`).join("");
+      const palette = ["#f97316", "#18181b", "#ea580c", "#52525b", "#c2410c", "#3f3f46", "#fb923c", "#71717a"];
+      const lines = (s) => String(s || "").split("\n").map((l) => l.trim()).filter(Boolean);
+
+      function read() {
+        const f = Object.fromEntries(new FormData(form));
+        return {
+          title: f.title || "Your job title", company: f.company || "Your company",
+          color: palette[(f.company || "").length % palette.length],
+          category: f.category, type: f.type, location: f.location || "Remote · Worldwide",
+          salary: f.salary || "Salary not listed", email: f.email,
+          tags: String(f.tags || "").split(",").map((t) => t.trim()).filter(Boolean).slice(0, 5),
+          summary: f.summary, responsibilities: lines(f.responsibilities), requirements: lines(f.requirements),
+          posted: 0, featured: false,
+        };
+      }
+      const preview = () => { K.$("#preview").innerHTML = K.jobCard(read()).replace("<button", '<div').replace(/<\/button>\s*$/, "</div>").replace(/data-job="[^"]*"/, ""); };
+
+      form.addEventListener("input", preview);
+      form.addEventListener("reset", () => setTimeout(preview));
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const missing = ["title", "company", "email"].filter((k) => !form.elements[k].value.trim());
+        if (missing.length || !form.elements.email.checkValidity()) {
+          (form.elements[missing[0]] || form.elements.email).focus();
+          K.toast("Please add a job title, company and a valid contact email.");
+          return;
+        }
+        S.submitJob(read());
+        form.reset();
+        K.toast("Thanks! Your listing is in the review queue.");
+      });
+      preview();
+    })();
+  </script>
+</body>
+</html>

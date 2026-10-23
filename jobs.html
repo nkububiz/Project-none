@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find remote jobs — KaziRemote</title>
+  <meta name="description" content="Search reviewed remote jobs in engineering, design, marketing, support and more." />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("kazi:theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>K</text></svg>" />
+</head>
+<body data-page="jobs">
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="page-head">
+      <h1>Find your next remote role</h1>
+      <p class="muted">Every listing is reviewed by the KaziRemote team before it goes live.</p>
+    </div>
+
+    <div class="board">
+      <aside class="filters" aria-label="Filters">
+        <div>
+          <h4>Category</h4>
+          <div class="chip-group" id="cat-chips"></div>
+        </div>
+        <div>
+          <h4>Job type</h4>
+          <div class="chip-group" id="type-chips"></div>
+        </div>
+        <div id="enroll-nudge"></div>
+      </aside>
+
+      <div>
+        <div class="board-toolbar">
+          <div class="search-bar">
+            <label class="sr-only" for="q">Search</label>
+            <input id="q" type="search" placeholder="Search title, company or skill…" />
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn btn-primary btn-sm" id="btn-job-alerts">🔔 Get WhatsApp &amp; Telegram Alerts</button>
+            <div class="currency-toggle" id="currency-toggle" title="Switch salary between USD and KES">
+              <button type="button" class="currency-btn" data-curr="USD">USD ($)</button>
+              <button type="button" class="currency-btn" data-curr="KES">KES (Ksh)</button>
+            </div>
+            <label class="sr-only" for="sort">Sort</label>
+            <select id="sort" style="width:auto">
+              <option value="recent">Most recent</option>
+              <option value="featured">Featured first</option>
+              <option value="popular">Most applicants</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+          <div class="result-count" id="count" style="margin:0"></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="badge badge-verified" style="font-size:.76rem">🛡️ All listings verified &amp; spam-screened</span>
+            <a href="tel:0183036639" style="font-size:.78rem;color:var(--brand);text-decoration:none;font-weight:600">📞 Desk: 0183 036 639</a>
+          </div>
+        </div>
+        <div class="job-list" id="results"></div>
+        <div style="text-align:center;margin:24px 0"><button class="btn btn-ghost" id="load-more">Load more jobs</button></div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    (function () {
+      const S = KaziStore, K = Kazi;
+      const params = new URLSearchParams(location.search);
+      const state = { q: params.get("q") || "", category: params.get("category") || "all", type: "all", sort: "recent" };
+
+      K.$("#q").value = state.q;
+
+      function chips(el, items, key) {
+        el.innerHTML = [{ id: "all", label: "All" }, ...items].map((i) =>
+          `<button class="chip" data-${key}="${i.id}" aria-pressed="${state[key] === i.id}">${K.esc(i.label)}</button>`).join("");
+        el.onclick = (e) => {
+          const b = e.target.closest("[data-" + key + "]");
+          if (!b) return;
+          state[key] = b.dataset[key];
+          chips(el, items, key);
+          render();
+        };
+      }
+      chips(K.$("#cat-chips"), S.categories, "category");
+      chips(K.$("#type-chips"), S.types.map((t) => ({ id: t, label: t })), "type");
+
+      function nudge() {
+        const status = S.enrollment();
+        const el = K.$("#enroll-nudge");
+        if (status === "active") { el.innerHTML = '<div class="status-box active"><span>✅</span><p><strong>You\'re enrolled.</strong> Apply to any role.</p></div>'; return; }
+        if (status === "pending") { el.innerHTML = '<div class="status-box pending"><span>⏳</span><p><strong>Payment under review.</strong> Usually within a few hours.</p></div>'; return; }
+        el.innerHTML = `<div class="mpesa-card" style="padding:20px"><div class="label">Enroll to apply</div>
+          <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;margin:6px 0 4px">${K.fmtKES(S.config.ENROLL_FEE_KES)} once</div>
+          <p style="opacity:.85;font-size:.9rem">Pay via M-Pesa Till ${S.config.TILL_NUMBER}</p>
+          <a class="btn btn-sm" style="background:#fff;color:#111" href="/enroll.html">Enroll now</a></div>`;
+      }
+
+      // The catalog is unlimited, so results load in pages as you scroll.
+      let cursor = null, shown = 0;
+      function match(j) {
+        const q = state.q.trim().toLowerCase();
+        return (state.category === "all" || j.category === state.category) &&
+          (state.type === "all" || j.type === state.type) &&
+          (!q || [j.title, j.company, j.location, ...(j.tags || [])].join(" ").toLowerCase().includes(q));
+      }
+      function loadMore() {
+        const page = S.jobsPage({ match, sort: state.sort, limit: 20, cursor });
+        cursor = page.next;
+        shown += page.jobs.length;
+        K.$("#results").insertAdjacentHTML("beforeend", page.jobs.map(K.jobCard).join(""));
+        K.$("#count").textContent = shown
+          ? `Unlimited remote jobs · showing ${shown.toLocaleString()}`
+          : "No matching roles";
+        if (!shown) {
+          K.$("#results").innerHTML = '<div class="empty"><h3>No matching roles</h3><p>Try a different keyword or clear your filters.</p></div>';
+          K.$("#load-more").hidden = true;
+        } else K.$("#load-more").hidden = !page.jobs.length;
+      }
+      function render() {
+        cursor = null; shown = 0;
+        K.$("#results").innerHTML = "";
+        loadMore();
+      }
+      K.$("#load-more").onclick = loadMore;
+      new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && shown) loadMore();
+      }, { rootMargin: "600px" }).observe(K.$("#load-more"));
+
+      function syncCurrencyButtons() {
+        const curr = S.currency();
+        document.querySelectorAll("#currency-toggle .currency-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.curr === curr);
+        });
+      }
+      const curWrap = K.$("#currency-toggle");
+      if (curWrap) {
+        curWrap.onclick = (e) => {
+          const btn = e.target.closest("[data-curr]");
+          if (!btn) return;
+          S.setCurrency(btn.dataset.curr);
+          syncCurrencyButtons();
+          K.toast(`Salaries switched to ${btn.dataset.curr} (Rate: 1 USD ≈ ${S.config.USD_TO_KES} KES)`);
+          render();
+        };
+      }
+      document.addEventListener("kazi:currency", () => {
+        syncCurrencyButtons();
+        render();
+      });
+
+      const alertBtn = K.$("#btn-job-alerts");
+      if (alertBtn) alertBtn.onclick = K.openJobAlertsModal;
+
+      K.$("#q").addEventListener("input", (e) => { state.q = e.target.value; render(); });
+      K.$("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+      document.addEventListener("kazi:auth", nudge);
+      syncCurrencyButtons();
+      nudge();
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enroll with Local Payment — KaziRemote</title>
+  <meta name="description" content="Enroll on KaziRemote with local African payment methods (M-Pesa Till 4374253, MoMo, Paystack, Card) and apply to unlimited remote jobs." />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("kazi:theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23f97316'/><text x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>K</text></svg>" />
+</head>
+<body data-page="enroll">
+  <header id="site-header"></header>
+
+  <main class="container">
+    <div class="hotline-banner">
+      <div>
+        <strong>📞 Need help with enrollment or payment?</strong>
+        <span class="muted" style="margin-left:6px">Call or WhatsApp our support line: <strong>0183 036 639</strong></span>
+      </div>
+      <div class="hotline-links">
+        <a class="hotline-pill" href="tel:0183036639">📞 Call 0183 036 639</a>
+        <a class="hotline-pill" style="background:#22c55e" href="https://wa.me/254183036639?text=Hi%20KaziRemote%20Team%2C%20I%20need%20help%20with%20enrollment" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="page-head">
+      <span class="badge badge-brand">For job seekers · Pan-African</span>
+      <h1 style="margin-top:12px">Enroll once. Apply everywhere.</h1>
+      <p class="muted">Pay once in your local currency to unlock verified applications to every role on KaziRemote.</p>
+    </div>
+
+    <!-- Location-based payment switcher -->
+    <div class="field" id="country-selector-box" style="margin-bottom:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <label style="font-size:.9rem;font-weight:700;margin:0">Select your country / payment currency:</label>
+        <span class="muted" style="font-size:.8rem">Click your flag to set local checkout</span>
+      </div>
+      <div class="country-selector" id="country-pills"></div>
+    </div>
+
+    <!-- Active selected country confirmation bar (appears after selecting, selector disappears) -->
+    <div id="selected-country-bar" style="display:none;margin-bottom:18px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span id="selected-country-flag" style="font-size:1.4rem">🇰🇪</span>
+        <div>
+          <strong id="selected-country-title" style="font-size:.96rem">Checkout for Kenya (KES 500)</strong>
+          <span class="muted" style="font-size:.82rem;display:block" id="selected-country-sub">M-Pesa Buy Goods · Till 4374253</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" id="btn-change-country" style="font-size:.82rem;padding:6px 12px;border:1px solid var(--line)">
+        🌍 Change Country
+      </button>
+    </div>
+
+    <div class="two-col">
+      <div class="panel" id="enroll-panel"></div>
+
+      <aside class="sticky">
+        <div class="mpesa-card" id="gateway-card">
+          <div class="label" id="side-gateway-label">Lipa na M-Pesa · Buy Goods</div>
+          <div class="till"><span id="till"></span><button type="button" id="copy-till">Copy</button></div>
+          <div style="font-size:.95rem;font-weight:700;letter-spacing:.02em"><span id="side-id-label">Store:</span> <span id="till-name"></span></div>
+          <div style="opacity:.85;font-size:.82rem;margin-top:2px" id="side-gateway-note">Safaricom phone prompt will display this exact store name</div>
+          <div class="mpesa-amount"><span>Enrollment fee</span><strong id="fee"></strong></div>
+        </div>
+        <div class="panel" style="margin-top:16px;padding:20px">
+          <strong style="font-family:var(--font-display)">What you get</strong>
+          <div class="perk-list">
+            <div class="perk"><span class="ico">📨</span><span>Unlimited applications to reviewed remote jobs</span></div>
+            <div class="perk"><span class="ico">🔔</span><span>Instant WhatsApp / Telegram alerts for new roles</span></div>
+            <div class="perk"><span class="ico">⚡</span><span>Direct employer delivery &amp; verified candidate profile</span></div>
+            <div class="perk"><span class="ico">🛡️</span><span>Verified employers only — zero scams &amp; zero agency cuts</span></div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:16px;padding:20px;background:color-mix(in srgb, #059669 8%, var(--surface));border-color:color-mix(in srgb, #059669 30%, transparent)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:1.4rem">🛡️</span>
+            <strong style="color:#059669;font-size:.95rem">100% Anti-Scam &amp; Refund Guarantee</strong>
+          </div>
+          <p style="font-size:.84rem;color:var(--ink-2);margin:0;line-height:1.45">
+            If your transaction code is not verified or you are not completely satisfied within 30 days, we issue a prompt 100% refund to your original account. Questions? Helpline: <strong>0183 036 639</strong>.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    (function () {
+      const S = KaziStore, K = Kazi;
+
+      function updateSelectedCountryBar() {
+        const reg = S.getCountryPayment(S.selectedCountry());
+        if (K.$("#selected-country-flag")) K.$("#selected-country-flag").textContent = reg.flag;
+        if (K.$("#selected-country-title")) K.$("#selected-country-title").textContent = `Checkout for ${reg.country} (${reg.feeDisplay})`;
+        if (K.$("#selected-country-sub")) K.$("#selected-country-sub").textContent = `${reg.gateway} · ${reg.identifierLabel}: ${reg.identifierValue}`;
+      }
+
+      function hideCountrySelector() {
+        const box = K.$("#country-selector-box");
+        const bar = K.$("#selected-country-bar");
+        if (box) box.style.display = "none";
+        if (bar) bar.style.display = "flex";
+        updateSelectedCountryBar();
+      }
+
+      function showCountrySelector() {
+        const box = K.$("#country-selector-box");
+        const bar = K.$("#selected-country-bar");
+        if (box) box.style.display = "block";
+        if (bar) bar.style.display = "none";
+        renderCountryPills();
+      }
+
+      function renderCountryPills() {
+        const wrap = K.$("#country-pills");
+        const curr = S.selectedCountry();
+        const payments = S.regionalPayments;
+        wrap.innerHTML = Object.values(payments).map((p) => {
+          const active = p.code === curr ? "active" : "";
+          return `
+            <button type="button" class="country-pill ${active}" data-country="${p.code}">
+              <span style="display:flex;align-items:center;gap:6px">
+                <span class="pill-flag">${p.flag}</span>
+                <span>${K.esc(p.country)}</span>
+              </span>
+              <span class="pill-fee">${p.feeDisplay}</span>
+            </button>`;
+        }).join("");
+
+        wrap.onclick = (e) => {
+          const pill = e.target.closest("[data-country]");
+          if (!pill) return;
+          S.setSelectedCountry(pill.dataset.country);
+          hideCountrySelector();
+          updateSideCard();
+          render();
+          K.toast(`Selected ${S.getCountryPayment(pill.dataset.country).country} checkout`);
+        };
+      }
+
+      function updateSideCard() {
+        const reg = S.getCountryPayment(S.selectedCountry());
+        K.$("#side-gateway-label").textContent = `${reg.flag} ${reg.gateway}`;
+        K.$("#till").textContent = reg.identifierValue;
+        K.$("#side-id-label").textContent = reg.identifierLabel + ":";
+        K.$("#till-name").textContent = S.config.TILL_NAME;
+        K.$("#fee").textContent = reg.feeDisplay;
+        K.$("#side-gateway-note").textContent = reg.instructions;
+        K.$("#copy-till").onclick = () => navigator.clipboard?.writeText(reg.identifierValue).then(() => K.toast(`${reg.identifierLabel} copied`));
+      }
+
+      function getPaymentInstructions(reg) {
+        if (reg.code === "KE") {
+          return `
+            <h2 style="font-size:1.45rem">1 · Lipa na M-Pesa (Kenya)</h2>
+            <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div>
+                  <strong style="font-size:1.05rem;color:var(--brand)">⚡ Instant M-Pesa STK Push</strong>
+                  <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Prompt appears on your phone automatically — zero wait verification.</p>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Trigger Phone Prompt →</button>
+              </div>
+            </div>
+            <p style="font-weight:600;font-size:.9rem;margin:12px 0 6px">Or pay manually via SIM Toolkit / M-PESA App:</p>
+            <ol class="pay-steps">
+              <li><span>Open <strong>M-Pesa</strong> &gt; <strong>Lipa na M-Pesa</strong> &gt; <strong>Buy Goods and Services</strong>.</span></li>
+              <li><span>Enter Till Number <strong>${reg.identifierValue}</strong>.</span></li>
+              <li><span>Enter amount <strong>${reg.feeDisplay}</strong>. Confirm store displays <strong>${S.config.TILL_NAME}</strong>.</span></li>
+              <li><span>Enter PIN. You'll receive a Safaricom SMS with code (e.g. <span class="mono">SJK4H7QX2P</span>).</span></li>
+            </ol>`;
+        } else if (reg.code === "GH" || reg.code === "RW") {
+          return `
+            <h2 style="font-size:1.45rem">1 · Mobile Money (${reg.country})</h2>
+            <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div>
+                  <strong style="font-size:1.05rem;color:var(--brand)">⚡ Instant MoMo Push</strong>
+                  <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Sends prompt directly to your phone number for approval.</p>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Trigger MoMo Prompt →</button>
+              </div>
+            </div>
+            <ol class="pay-steps">
+              <li><span>Dial merchant code or open MoMo app on your phone.</span></li>
+              <li><span>Pay <strong>${reg.feeDisplay}</strong> to merchant code <strong>${reg.identifierValue}</strong>.</span></li>
+              <li><span>Enter PIN to approve. Keep your MoMo transaction ID SMS.</span></li>
+            </ol>`;
+        } else if (reg.code === "NG") {
+          return `
+            <h2 style="font-size:1.45rem">1 · Bank Transfer / USSD (Nigeria)</h2>
+            <ol class="pay-steps">
+              <li><span>Transfer <strong>${reg.feeDisplay}</strong> to Access Bank account: <strong>${reg.identifierValue}</strong>.</span></li>
+              <li><span>Or dial <strong>*737#</strong> / bank USSD with narration: <strong>KAZI ENROLL</strong>.</span></li>
+              <li><span>Copy your bank session ID / reference number from receipt.</span></li>
+            </ol>`;
+        } else if (reg.code === "ZA") {
+          return `
+            <h2 style="font-size:1.45rem">1 · Ozow Instant EFT (South Africa)</h2>
+            <ol class="pay-steps">
+              <li><span>Select your bank (Capitec, FNB, Standard Bank, Nedbank, Absa).</span></li>
+              <li><span>Pay <strong>${reg.feeDisplay}</strong> using reference: <strong>${reg.identifierValue}</strong>.</span></li>
+              <li><span>Keep the EFT payment confirmation reference.</span></li>
+            </ol>`;
+        } else {
+          return `
+            <h2 style="font-size:1.45rem">1 · International Credit / Debit Card</h2>
+            <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+                <div>
+                  <strong style="font-size:1.05rem;color:var(--brand)">💳 Instant 256-bit Secure Card Checkout</strong>
+                  <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Visa, MasterCard, or Apple Pay (${reg.feeDisplay}).</p>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Pay $4.00 Card →</button>
+              </div>
+            </div>
+            <ol class="pay-steps">
+              <li><span>Click the button above to authorize your card.</span></li>
+              <li><span>Or enter your card receipt authorization code below for instant verification.</span></li>
+            </ol>`;
+        }
+      }
+
+      function render() {
+        const panel = K.$("#enroll-panel");
+        const user = S.currentUser();
+        const status = S.enrollment();
+        const reg = S.getCountryPayment(S.selectedCountry());
+
+        if (status === "active") {
+          panel.innerHTML = `
+            <div class="status-box active">
+              <span style="font-size:1.6rem">✅</span>
+              <div>
+                <strong>You're enrolled, ${K.esc(user.name.split(" ")[0])}!</strong>
+                <p style="margin:2px 0 0">Every remote role on KaziRemote is open to you with 100% direct salary delivery.</p>
+              </div>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-primary btn-lg" href="/jobs.html">Browse open jobs →</a>
+              <button class="btn btn-ghost" id="btn-view-apps">My Applications</button>
+            </div>`;
+          const btnApps = K.$("#btn-view-apps");
+          if (btnApps) btnApps.onclick = K.openApplicationsModal;
+          return;
+        }
+
+        if (status === "pending") {
+          panel.innerHTML = `
+            <div class="status-box pending">
+              <span style="font-size:1.6rem">⏳</span>
+              <div>
+                <strong>We've received your payment details.</strong>
+                <p style="margin:2px 0 0">Our team is verifying your transaction code against our ${reg.gateway} statement. You will be able to apply the moment it's verified.</p>
+                <div style="font-size:.82rem;margin-top:6px;color:var(--ink-2)">Have questions? Contact our hotline: <strong>0183 036 639</strong></div>
+              </div>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-ghost" href="/jobs.html">Browse jobs while waiting</a>
+              <a class="btn btn-ghost" href="tel:0183036639">Call Support (0183 036 639)</a>
+            </div>`;
+          return;
+        }
+
+        const step1 = getPaymentInstructions(reg);
+
+        if (!user) {
+          panel.innerHTML = `
+            ${step1}
+            <h2 style="font-size:1.45rem;margin-top:28px">2 · Confirm your payment</h2>
+            <p class="muted">Sign in with Google so we can link your verified enrollment to your account.</p>
+            <button class="btn google-btn btn-lg" id="enroll-signin">Continue with Google</button>`;
+          K.$("#enroll-signin").onclick = K.signIn;
+          bindStkButton();
+          return;
+        }
+
+        panel.innerHTML = `
+          ${step1}
+          <h2 style="font-size:1.45rem;margin-top:28px">2 · Confirm your payment</h2>
+          <form id="pay-form" class="form-grid" novalidate>
+            <div class="field"><label for="name">Full name</label><input id="name" type="text" value="${K.esc(user.name)}" required /></div>
+            <div class="field"><label for="phone">Phone number / Account ID</label><input id="phone" type="tel" value="0183036639" required /></div>
+            <div class="field full"><label for="code">Transaction Code / Reference</label>
+              <input id="code" type="text" class="mono" placeholder="e.g. SJK4H7QX2P or REF99210" maxlength="12" style="text-transform:uppercase;letter-spacing:.1em" required />
+              <span class="hint">The code at the start of your confirmation SMS or payment receipt. Support desk: 0183 036 639.</span>
+            </div>
+            <div class="full">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Submit for verification (${reg.feeDisplay})</button>
+            </div>
+          </form>`;
+
+        bindStkButton();
+
+        K.$("#pay-form").onsubmit = (e) => {
+          e.preventDefault();
+          const name = K.$("#name").value.trim();
+          const phone = K.$("#phone").value.trim();
+          const code = K.$("#code").value.trim().toUpperCase();
+
+          if (!name) return K.toast("Please enter your name.");
+          if (!phone) return K.toast("Please enter your phone number.");
+          if (!code || code.length < 5) return K.toast("Please enter a valid transaction reference code.");
+
+          // Duplicate payment code detection
+          if (S.isDuplicateCode(code)) {
+            K.toast("⚠️ This transaction code has already been submitted or verified. Please check your SMS.");
+            return;
+          }
+
+          S.submitPayment({
+            name,
+            email: user.email,
+            phone,
+            code,
+            countryCode: reg.code
+          });
+
+          K.toast("Payment submitted — our desk will verify it promptly.");
+          K.renderAuth();
+          render();
+        };
+      }
+
+      function bindStkButton() {
+        const btn = K.$("#btn-stk-push");
+        if (!btn) return;
+        const reg = S.getCountryPayment(S.selectedCountry());
+        btn.onclick = () => {
+          K.openStkPushModal({
+            phone: "0183036639",
+            countryCode: reg.code,
+            fee: reg.feeDisplay,
+            onSuccess: () => {
+              K.renderAuth();
+              render();
+            }
+          });
+        };
+      }
+
+      const btnChange = K.$("#btn-change-country");
+      if (btnChange) {
+        btnChange.onclick = () => showCountrySelector();
+      }
+
+      renderCountryPills();
+      updateSideCard();
+      if (localStorage.getItem("kazi:selectedCountry")) {
+        hideCountrySelector();
+      }
+      document.addEventListener("kazi:auth", render);
+      document.addEventListener("kazi:country_changed", () => {
+        updateSideCard();
+        render();
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
