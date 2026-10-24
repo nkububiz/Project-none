@@ -2,7 +2,7 @@
 
 KaziRemote is a remote job marketplace. Employers post jobs, job seekers enroll by paying a one-time fee to M-Pesa Till **4374253**, and an admin team reviews listings and verifies payments. Everyone signs in with Google. Dark mode is supported throughout.
 
-The stack stays **HTML, CSS and vanilla JavaScript** on the frontend. Server-side pieces are Netlify Functions (plain JS) with Netlify Database (Postgres) and Netlify Identity.
+The stack stays **HTML, CSS and vanilla JavaScript** on the frontend. Server-side pieces are Vercel Serverless Functions (plain JS) with Vercel Postgres and Google OAuth.
 
 ---
 
@@ -13,12 +13,12 @@ The stack stays **HTML, CSS and vanilla JavaScript** on the frontend. Server-sid
 - All data comes from `public/js/data.js` (`KaziStore`) with a localStorage-backed demo store. Google sign-in is a demo stub.
 
 ## Milestone 2 — Data model & API
-- Netlify Database tables: `users`, `jobs`, `payments`, `applications`.
-- Netlify Functions (`/api/jobs`, `/api/payments`, `/api/applications`) for listing, creating and updating records.
+- Database tables: `users`, `jobs`, `payments`, `applications`.
+- Vercel Serverless Functions (`/api/jobs`, `/api/payments`, `/api/applications`) for listing, creating and updating records.
 - Replace the `KaziStore` methods with `fetch` calls; pages stay unchanged. Keep the generated catalog as a server-side fallback feed, or seed the `jobs` table in batches.
 
 ## Milestone 3 — Google login & roles
-- Netlify Identity with the Google provider; replace `signInDemo()` with the real sign-in.
+- Google OAuth provider; replace `signInDemo()` with the real sign-in.
 - Roles: `seeker`, `employer`, `admin`. Protect the admin page and admin API routes server-side. The hidden logo gesture stays as the way in, but behind a real login.
 - Employers see a "My listings" view with their jobs and applicants.
 
@@ -28,7 +28,7 @@ The stack stays **HTML, CSS and vanilla JavaScript** on the frontend. Server-sid
 - Manual admin verification stays as the fallback.
 
 ## Milestone 5 — Applications & notifications
-- Seekers apply with a CV upload (Netlify Blobs) and a cover note; employers view applicants per job.
+- Seekers apply with a CV upload and a cover note; employers view applicants per job.
 - Email notifications for payment verified, application received and listing approved.
 
 ## Milestone 6 — Polish & launch

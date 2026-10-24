@@ -3,27 +3,27 @@
 A remote job marketplace for African talent. Employers post remote jobs, job seekers enroll with a one-time M-Pesa payment to Till **4374253** and then apply to any listing, and admins review listings and verify payments. Includes Google sign-in and a white, orange, grey and black theme with a matching dark mode. The jobs board has an unlimited, always-full catalog that loads as you scroll.
 
 ## Tech
-- Plain **HTML, CSS and JavaScript**, no framework and no build step
-- Hosted on **Netlify** (static files are served from `public/`)
-- Planned: Netlify Functions, Netlify Database and Netlify Identity (Google) for the backend
+- Plain **HTML, CSS and JavaScript**, no frontend framework
+- Hosted on **Vercel** (`vercel.json`, built to `dist/` with clean URL routing)
+- Planned: Vercel Serverless Functions (`/api/*`), Vercel Postgres, and OAuth for the backend
 
 ## Pages
-| Page | Path |
-| --- | --- |
-| Landing | `/` |
-| Jobs board | `/jobs.html` |
-| Post a job (employers) | `/post-job.html` |
-| Enroll via M-Pesa (seekers) | `/enroll.html` |
-| Admin dashboard (hidden) | tap the logo 5 times within 3 seconds, or `/admin.html` |
+| Page | Path | Clean URL |
+| --- | --- | --- |
+| Landing | `index.html` | `/` |
+| Jobs board | `jobs.html` | `/jobs` |
+| Post a job (employers) | `post-job.html` | `/post-job` |
+| Enroll via M-Pesa (seekers) | `enroll.html` | `/enroll` |
+| Admin dashboard (hidden) | `admin.html` | `/admin` (or tap logo 5× in 3s) |
 
 ## Unlimited jobs
 After the curated listings, `public/js/data.js` generates jobs on demand from their index (`g-0`, `g-1`, …). Each one is deterministic, so every visitor sees the same job with the same id, and the board loads 20 more each time you scroll to the bottom.
 
 ## Run locally
 ```bash
-netlify dev --port 8889
-# or any static server, e.g.
-npx serve public
+npm run dev
+# or build for Vercel
+npm run build
 ```
 
 ## Current state
