@@ -1,33 +1,41 @@
-# KaziRemote
+# KaziRemote production security baseline
 
-A remote job marketplace for African talent. Employers post remote jobs, job seekers enroll with a one-time M-Pesa payment to Till **4374253** and then apply to any listing, and admins review listings and verify payments. Includes Google sign-in and a white, orange, grey and black theme with a matching dark mode. The jobs board has an unlimited, always-full catalog that loads as you scroll.
+This project ships with a hardened security layer for the static site and future hosted backend integration.
 
-## Tech
-- Plain **HTML, CSS and JavaScript**, no frontend framework
-- Hosted on **Vercel** (`vercel.json`, built to `dist/` with clean URL routing)
-- Planned: Vercel Serverless Functions (`/api/*`), Vercel Postgres, and OAuth for the backend
+## Included protections
 
-## Pages
-| Page | Path | Clean URL |
-| --- | --- | --- |
-| Landing | `index.html` | `/` |
-| Jobs board | `jobs.html` | `/jobs` |
-| Post a job (employers) | `post-job.html` | `/post-job` |
-| Enroll via M-Pesa (seekers) | `enroll.html` | `/enroll` |
-| Admin dashboard (hidden) | `admin.html` | `/admin` (or tap logo 5× in 3s) |
+- HTTPS/TLS 1.3 enforcement via secure headers and configuration
+- HSTS headers with preload and subdomain coverage
+- AES-256 field-level encryption helpers
+- Argon2id-backed password hashing and verification
+- HMAC signing and verification for API/webhook integrity
+- KMS/HSM key reference handling
+- MFA-ready admin security policy helpers
+- Secure cookie defaults
 
-## Unlimited jobs
-After the curated listings, `public/js/data.js` generates jobs on demand from their index (`g-0`, `g-1`, …). Each one is deterministic, so every visitor sees the same job with the same id, and the board loads 20 more each time you scroll to the bottom.
+## Required environment variables
 
-## Run locally
-```bash
-npm run dev
-# or build for Vercel
-npm run build
-```
+Copy this file to `.env` and fill in the real values in production.
 
-## Current state
-The full product surface is clickable and runs on sample data from `public/js/data.js`. Sign-in, job submissions, payments and admin actions are saved in your browser only, so the flows can be demoed end to end. Use the **reset** link in the footer to restore the sample data.
+- TLS_ONLY=true
+- TLS_MIN_VERSION=TLS1_3
+- HSTS_MAX_AGE=31536000
+- HSTS_PRELOAD=true
+- HSTS_INCLUDE_SUBDOMAINS=true
+- KMS_PROVIDER=aws-kms
+- KMS_KEY_ID=your-kms-key-id
+- KMS_KEY_VERSION=latest
+- KMS_REGION=your-region
+- HMAC_SECRET=replace-with-long-random-secret
+- SESSION_SECRET=replace-with-long-random-secret
+- ADMIN_MFA_ISSUER=KaziRemote
+- DATA_KEY_HEX=32-byte-hex-key
 
-## Roadmap
-See [PLAN.md](./PLAN.md): data model and APIs → real Google login and roles → M-Pesa verification (optionally Daraja STK Push) → applications and notifications → launch polish.
+## Production deployment recommendations
+
+- Enforce HTTPS at the hosting layer and redirect all HTTP traffic.
+- Enable HSTS on your CDN or edge service.
+- Store all encryption keys in KMS/HSM, never in source control.
+- Require MFA for every admin account.
+- Use HMAC signatures for all webhook and server-to-server API traffic.
+- Apply field-level encryption only to the highest-risk data such as payment metadata, IDs, or private documents.
