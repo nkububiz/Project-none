@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/jobs", "destination": "/jobs.html" },
+    { "source": "/enroll", "destination": "/enroll.html" },
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/post-job", "destination": "/post-job.html" }
+  ]
+}
