@@ -32,7 +32,7 @@
             <h1 style="font-size:2rem;margin:0 0 4px">Good morning, admin</h1>
             <p class="muted" style="margin:0">Platform health, verified payments, and applicant pipeline.</p>
           </div>
-          <a class="btn btn-ghost btn-sm" href="tel:0183036639">📞 Hotline: 0183 036 639</a>
+          <a class="btn btn-ghost btn-sm" href="tel:0183036639" style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Hotline: 0183 036 639</a>
         </div>
         <div class="kpis" id="kpis" style="margin-top:16px"></div>
         <div class="two-col" style="grid-template-columns:1.3fr .7fr;padding:0">
@@ -55,8 +55,8 @@
             <p>Track candidate applications from submission through Google Meet interviews to final hiring.</p>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn btn-ghost btn-sm" id="btn-export-apps">📥 Export Applications CSV</button>
-            <a class="btn btn-primary btn-sm" href="https://meet.google.com/new" target="_blank" rel="noopener">📅 Start Instant Google Meet</a>
+            <button class="btn btn-ghost btn-sm" id="btn-export-apps" style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Applications CSV</button>
+            <a class="btn btn-primary btn-sm" href="https://meet.google.com/new" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Start Instant Google Meet</a>
           </div>
         </div>
         <div class="kanban-board" id="kanban-board"></div>
@@ -89,7 +89,7 @@
             <p>Match transaction codes against Till <strong id="till-ref"></strong> statements, then verify.</p>
           </div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <button class="btn btn-ghost btn-sm" id="btn-export-pays">📥 Export Payments CSV</button>
+            <button class="btn btn-ghost btn-sm" id="btn-export-pays" style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Payments CSV</button>
             <select id="pay-filter" style="width:auto">
               <option value="pending">Pending</option>
               <option value="verified">Verified</option>
@@ -121,6 +121,7 @@
 
   <footer id="site-footer"></footer>
 
+  <script src="/js/icons.js"></script>
   <script src="/js/data.js"></script>
   <script src="/js/app.js"></script>
   <script>
@@ -169,9 +170,12 @@
         K.$("#bars").innerHTML = data.map((d) => `<div class="bar"><b>${d.value}</b><div style="height:${(d.value / max) * 100}%"></div><span>${d.label}</span></div>`).join("");
 
         const items = [];
-        if (pendingPays) items.push(`<button class="btn btn-ghost btn-block" data-go="payments" style="justify-content:space-between">💳 Verify payments <span class="badge badge-warn">${pendingPays}</span></button>`);
-        if (pendingJobs) items.push(`<button class="btn btn-ghost btn-block" data-go="jobs" style="justify-content:space-between">📝 Review job listings <span class="badge badge-warn">${pendingJobs}</span></button>`);
-        items.push(`<button class="btn btn-ghost btn-block" data-go="pipeline" style="justify-content:space-between">📋 Candidate Hiring Desk <span class="badge badge-brand">${apps.length}</span></button>`);
+        const payIcon = window.KaziIcons ? window.KaziIcons.icon("creditCard", 16) : "";
+        const noteIcon = window.KaziIcons ? window.KaziIcons.icon("fileText", 16) : "";
+        const listIcon = window.KaziIcons ? window.KaziIcons.icon("clipboard", 16) : "";
+        if (pendingPays) items.push(`<button class="btn btn-ghost btn-block" data-go="payments" style="justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:8px">${payIcon} Verify payments</span> <span class="badge badge-warn">${pendingPays}</span></button>`);
+        if (pendingJobs) items.push(`<button class="btn btn-ghost btn-block" data-go="jobs" style="justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:8px">${noteIcon} Review job listings</span> <span class="badge badge-warn">${pendingJobs}</span></button>`);
+        items.push(`<button class="btn btn-ghost btn-block" data-go="pipeline" style="justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:8px">${listIcon} Candidate Hiring Desk</span> <span class="badge badge-brand">${apps.length}</span></button>`);
         K.$("#attention").innerHTML = items.join("");
         K.$("#c-jobs").textContent = pendingJobs || ""; K.$("#c-jobs").hidden = !pendingJobs;
         K.$("#c-pay").textContent = pendingPays || ""; K.$("#c-pay").hidden = !pendingPays;
@@ -186,7 +190,7 @@
         { key: "under_review", label: "3. Under Review" },
         { key: "shortlisted", label: "4. Shortlisted" },
         { key: "interview_scheduled", label: "5. Interview Set" },
-        { key: "hired", label: "6. Hired 🎉" },
+        { key: "hired", label: "6. Hired" },
       ];
 
       function renderPipeline() {
@@ -206,8 +210,8 @@
               <div style="font-size:.8rem;color:var(--muted)">${K.esc(a.company)} · Tel: ${K.esc(a.candidatePhone || "0183036639")}</div>
               ${a.note ? `<div style="font-size:.78rem;color:var(--ink-2);background:var(--bg-2);padding:6px;border-radius:6px;margin:8px 0">${K.esc(a.note)}</div>` : ""}
               <div class="kanban-actions">
-                <button class="btn btn-ghost btn-sm" style="font-size:.74rem;padding:3px 8px" data-view-cv="${K.esc(a.candidateName || "Candidate")}">📄 CV</button>
-                <a class="btn btn-ghost btn-sm" style="font-size:.74rem;padding:3px 8px" href="${a.meetLink || "https://meet.google.com/new"}" target="_blank" rel="noopener">📅 Meet</a>
+                <button class="btn btn-ghost btn-sm" style="font-size:.74rem;padding:3px 8px;display:inline-flex;align-items:center;gap:4px" data-view-cv="${K.esc(a.candidateName || "Candidate")}"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> CV</button>
+                <a class="btn btn-ghost btn-sm" style="font-size:.74rem;padding:3px 8px;display:inline-flex;align-items:center;gap:4px" href="${a.meetLink || "https://meet.google.com/new"}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Meet</a>
                 <select class="btn btn-ghost btn-sm" style="font-size:.74rem;padding:2px 6px" data-change-stage="${K.esc(a.id)}">
                   ${PIPELINE_COLUMNS.map((c) => `<option value="${c.key}" ${c.key === a.status ? "selected" : ""}>Move to ${c.label}</option>`).join("")}
                 </select>
@@ -270,7 +274,7 @@
         K.$("#pay-body").innerHTML = rows.length ? rows.map((p) => {
           const codeUpper = (p.code || "").toUpperCase();
           const isDuplicate = codeCounts[codeUpper] > 1;
-          const dupeBadge = isDuplicate ? '<span class="badge badge-danger" style="margin-left:4px" title="Warning: This transaction code was used multiple times">⚠️ Duplicate</span>' : "";
+          const dupeBadge = isDuplicate ? '<span class="badge badge-danger" style="margin-left:4px;display:inline-flex;align-items:center;gap:4px" title="Warning: This transaction code was used multiple times"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Duplicate</span>' : "";
           const gatewayText = p.gateway || (p.countryCode === "KE" ? "M-Pesa Buy Goods" : "Mobile Money");
 
           return `<tr>

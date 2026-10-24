@@ -28,42 +28,42 @@
 
   const REGIONAL_PAYMENTS = {
     KE: {
-      code: "KE", country: "Kenya", flag: "🇰🇪", currency: "KES", amount: 500, feeDisplay: "KES 500",
+      code: "KE", country: "Kenya", flag: "KE", currency: "KES", amount: 500, feeDisplay: "KES 500",
       gateway: "M-Pesa Buy Goods", provider: "Safaricom M-Pesa",
       instructions: "Pay to Till 4374253 (KAZIREMOTE SERVICES (KENYA))",
       stkSupported: true,
       identifierLabel: "Till Number", identifierValue: "4374253"
     },
     NG: {
-      code: "NG", country: "Nigeria", flag: "🇳🇬", currency: "NGN", amount: 4500, feeDisplay: "NGN 4,500",
+      code: "NG", country: "Nigeria", flag: "NG", currency: "NGN", amount: 4500, feeDisplay: "NGN 4,500",
       gateway: "Paystack / Bank Transfer", provider: "Access Bank / USSD",
       instructions: "Transfer to KaziRemote Paystack account or dial *737#",
       stkSupported: false,
       identifierLabel: "Account No.", identifierValue: "0123984721 (Access Bank)"
     },
     GH: {
-      code: "GH", country: "Ghana", flag: "🇬🇭", currency: "GHS", amount: 45, feeDisplay: "GHS 45",
+      code: "GH", country: "Ghana", flag: "GH", currency: "GHS", amount: 45, feeDisplay: "GHS 45",
       gateway: "MTN Mobile Money", provider: "MTN MoMo / Telecel",
       instructions: "Send to Merchant Code 437425 or trigger instant MoMo prompt",
       stkSupported: true,
       identifierLabel: "Merchant Code", identifierValue: "437425"
     },
     RW: {
-      code: "RW", country: "Rwanda", flag: "🇷🇼", currency: "RWF", amount: 4200, feeDisplay: "RWF 4,200",
+      code: "RW", country: "Rwanda", flag: "RW", currency: "RWF", amount: 4200, feeDisplay: "RWF 4,200",
       gateway: "MTN MoMo Rwanda", provider: "MTN MoMo",
       instructions: "Dial *182*8*1*4374253# or trigger instant MoMo push",
       stkSupported: true,
       identifierLabel: "Merchant Code", identifierValue: "4374253"
     },
     ZA: {
-      code: "ZA", country: "South Africa", flag: "🇿🇦", currency: "ZAR", amount: 75, feeDisplay: "R 75",
+      code: "ZA", country: "South Africa", flag: "ZA", currency: "ZAR", amount: 75, feeDisplay: "R 75",
       gateway: "Ozow Instant EFT", provider: "Ozow / Capitec / Nedbank",
       instructions: "Instant EFT via Ozow secure banking gateway",
       stkSupported: false,
       identifierLabel: "Reference", identifierValue: "KAZI-ZA-ENROLL"
     },
     GLOBAL: {
-      code: "GLOBAL", country: "International / Other", flag: "🌍", currency: "USD", amount: 4, feeDisplay: "$4.00",
+      code: "GLOBAL", country: "International / Other", flag: "GLOBAL", currency: "USD", amount: 4, feeDisplay: "$4.00",
       gateway: "Stripe / Card", provider: "Visa / Mastercard / Apple Pay",
       instructions: "Pay with any international credit or debit card securely",
       stkSupported: false,
@@ -97,14 +97,14 @@
   };
 
   const CATEGORIES = [
-    { id: "engineering", label: "Engineering", emoji: "💻" },
-    { id: "design", label: "Design", emoji: "🎨" },
-    { id: "marketing", label: "Marketing", emoji: "📣" },
-    { id: "support", label: "Customer Support", emoji: "🎧" },
-    { id: "data", label: "Data & Analytics", emoji: "📊" },
-    { id: "writing", label: "Writing", emoji: "✍️" },
-    { id: "finance", label: "Finance & Ops", emoji: "🧾" },
-    { id: "va", label: "Virtual Assistant", emoji: "🗂️" },
+    { id: "engineering", label: "Engineering", icon: "engineering", emoji: "" },
+    { id: "design", label: "Design", icon: "design", emoji: "" },
+    { id: "marketing", label: "Marketing", icon: "marketing", emoji: "" },
+    { id: "support", label: "Customer Support", icon: "support", emoji: "" },
+    { id: "data", label: "Data & Analytics", icon: "data", emoji: "" },
+    { id: "writing", label: "Writing", icon: "writing", emoji: "" },
+    { id: "finance", label: "Finance & Ops", icon: "finance", emoji: "" },
+    { id: "va", label: "Virtual Assistant", icon: "va", emoji: "" },
   ];
 
   const TYPES = ["Full-time", "Part-time", "Contract", "Freelance"];
@@ -112,8 +112,8 @@
   const JOBS = [
     {
       id: "j-101", title: "Senior Frontend Engineer", company: "Sendwave Labs", color: "#f97316",
-      website: "https://www.sendwave.com", verified: true, flag: "🇰🇪", tzOverlap: "UTC+0 to +3 (Africa)",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#f97316"/><path d="M7 16l6-6 4 4 8-8M21 6h4v4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      website: "https://www.sendwave.com", verified: true, flag: "KE", tzOverlap: "UTC+0 to +3 (Africa)",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#F97316"/><path d="M10 20l9-9 5 5 10-10M27 6h7v7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
       category: "engineering", type: "Full-time", location: "Remote · Africa timezones",
       pay: { currency: "USD", min: 3500, max: 5000, unit: "MONTH" }, tz: "africa",
       posted: 1, featured: true, status: "approved", applicants: 42,
@@ -124,8 +124,8 @@
     },
     {
       id: "j-102", title: "Customer Success Associate", company: "Lipa Later", color: "#18181b",
-      website: "https://lipalater.com", verified: true, flag: "🇰🇪", tzOverlap: "EAT (UTC+3)",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#18181b"/><path d="M10 22V10h4v8h8v4H10z" fill="#f97316"/></svg>',
+      website: "https://lipalater.com", verified: true, flag: "KE", tzOverlap: "EAT (UTC+3)",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#18181B"/><path d="M13 28V12h5v11h10v5H13z" fill="#F97316"/></svg>',
       category: "support", type: "Full-time", location: "Remote · Kenya",
       pay: { currency: "KES", min: 90000, max: 120000, unit: "MONTH" }, tz: "east", countries: ["KE"],
       posted: 2, featured: true, status: "approved", applicants: 118,
@@ -136,8 +136,8 @@
     },
     {
       id: "j-103", title: "Product Designer (UI/UX)", company: "Andela Studio", color: "#ea580c",
-      website: "https://andela.com", verified: true, flag: "🇳🇬", tzOverlap: "Worldwide Async",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#3359DF"/><path d="M16 8l7 14h-4l-3-6-3 6h-4l7-14z" fill="white"/></svg>',
+      website: "https://andela.com", verified: true, flag: "NG", tzOverlap: "Worldwide Async",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#3359DF"/><path d="M20 9l9 19h-5l-4-9-4 9h-5l9-19z" fill="#FFFFFF"/></svg>',
       category: "design", type: "Contract", location: "Remote · Worldwide",
       pay: { currency: "USD", min: 40, max: 60, unit: "HOUR" }, tz: "any",
       posted: 3, featured: false, status: "approved", applicants: 64,
@@ -148,8 +148,8 @@
     },
     {
       id: "j-104", title: "Growth Marketing Manager", company: "Twiga Digital", color: "#52525b",
-      website: "https://twiga.com", verified: true, flag: "🇰🇪", tzOverlap: "EMEA Overlap",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#15803d"/><circle cx="16" cy="16" r="6" fill="#facc15"/></svg>',
+      website: "https://twiga.com", verified: true, flag: "KE", tzOverlap: "EMEA Overlap",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#15803D"/><circle cx="20" cy="20" r="8" fill="#FACC15"/><path d="M16 20a4 4 0 0 1 8 0" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>',
       category: "marketing", type: "Full-time", location: "Remote · EMEA",
       pay: { currency: "USD", min: 2800, max: 4000, unit: "MONTH" }, tz: "emea",
       posted: 4, featured: false, status: "approved", applicants: 37,
@@ -160,8 +160,8 @@
     },
     {
       id: "j-105", title: "Data Analyst", company: "M-Kopa Insights", color: "#c2410c",
-      website: "https://m-kopa.com", verified: true, flag: "🇰🇪", tzOverlap: "East Africa Time",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#0284c7"/><path d="M10 21V11l6 5 6-5v10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      website: "https://m-kopa.com", verified: true, flag: "KE", tzOverlap: "East Africa Time",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#0284C7"/><path d="M12 27V13l8 7 8-7v14" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
       category: "data", type: "Full-time", location: "Remote · East Africa",
       pay: { currency: "KES", min: 150000, max: 200000, unit: "MONTH" }, tz: "east",
       posted: 5, featured: true, status: "approved", applicants: 51,
@@ -172,8 +172,8 @@
     },
     {
       id: "j-106", title: "Technical Content Writer", company: "DevDocs Co.", color: "#3f3f46",
-      website: "https://devdocs.io", verified: true, flag: "🌍", tzOverlap: "Any Timezone",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#3f3f46"/><path d="M9 11h14M9 16h14M9 21h8" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>',
+      website: "https://devdocs.io", verified: true, flag: "GLOBAL", tzOverlap: "Any Timezone",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#27272A"/><path d="M11 13h18M11 20h18M11 27h10" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/></svg>',
       category: "writing", type: "Freelance", location: "Remote · Worldwide",
       pay: { currency: "USD", min: 0.12, unit: "WORD" }, tz: "any",
       posted: 6, featured: false, status: "approved", applicants: 89,
@@ -184,8 +184,8 @@
     },
     {
       id: "j-107", title: "Executive Virtual Assistant", company: "Bridge Partners", color: "#fb923c",
-      website: "https://bridgepartners.com", verified: true, flag: "🇰🇪", tzOverlap: "3pm–9pm EAT",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#fb923c"/><circle cx="16" cy="16" r="5" stroke="white" stroke-width="2.5"/><path d="M16 8v3M16 21v3M8 16h3M21 16h3" stroke="white" stroke-width="2"/></svg>',
+      website: "https://bridgepartners.com", verified: true, flag: "KE", tzOverlap: "3pm–9pm EAT",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#FB923C"/><circle cx="20" cy="20" r="7" stroke="#FFFFFF" stroke-width="3" fill="none"/><path d="M20 9v5M20 26v5M9 20h5M26 20h5" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/></svg>',
       category: "va", type: "Part-time", location: "Remote · Kenya / Uganda",
       pay: { currency: "USD", min: 800, max: 1200, unit: "MONTH" }, tz: "east", countries: ["KE", "UG"],
       posted: 7, featured: false, status: "approved", applicants: 203,
@@ -196,8 +196,8 @@
     },
     {
       id: "j-108", title: "Backend Engineer (Node.js)", company: "Pesapal Cloud", color: "#71717a",
-      website: "https://pesapal.com", verified: true, flag: "🇰🇪", tzOverlap: "Africa Timezones",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#059669"/><path d="M11 16h10M16 11v10" stroke="white" stroke-width="3" stroke-linecap="round"/></svg>',
+      website: "https://pesapal.com", verified: true, flag: "KE", tzOverlap: "Africa Timezones",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#059669"/><path d="M13 20h14M20 13v14" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/><circle cx="20" cy="20" r="11" stroke="#FFFFFF" stroke-width="2" fill="none"/></svg>',
       category: "engineering", type: "Full-time", location: "Remote · Africa timezones",
       pay: { currency: "USD", min: 3000, max: 4500, unit: "MONTH" }, tz: "africa",
       posted: 8, featured: false, status: "approved", applicants: 58,
@@ -208,8 +208,8 @@
     },
     {
       id: "j-109", title: "Bookkeeper", company: "Ledgerly", color: "#f97316",
-      website: "https://ledgerly.co", verified: true, flag: "🌍", tzOverlap: "Worldwide Async",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#d97706"/><rect x="9" y="9" width="14" height="14" rx="2" stroke="white" stroke-width="2"/><line x1="13" y1="13" x2="19" y2="13" stroke="white" stroke-width="2"/></svg>',
+      website: "https://ledgerly.co", verified: true, flag: "GLOBAL", tzOverlap: "Worldwide Async",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#D97706"/><rect x="11" y="11" width="18" height="18" rx="3" stroke="#FFFFFF" stroke-width="2.5" fill="none"/><line x1="16" y1="16" x2="24" y2="16" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/><line x1="16" y1="22" x2="24" y2="22" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/></svg>',
       category: "finance", type: "Contract", location: "Remote · Worldwide",
       pay: { currency: "USD", min: 20, max: 28, unit: "HOUR" }, tz: "any",
       posted: 10, featured: false, status: "approved", applicants: 26,
@@ -220,8 +220,8 @@
     },
     {
       id: "j-110", title: "Social Media Designer", company: "Kazi Creative", color: "#18181b",
-      website: "https://kazicreative.africa", verified: true, flag: "🇰🇪", tzOverlap: "EAT (UTC+3)",
-      logoSvg: '<svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7c3aed"/><circle cx="16" cy="16" r="6" stroke="white" stroke-width="2.5"/></svg>',
+      website: "https://kazicreative.africa", verified: true, flag: "KE", tzOverlap: "EAT (UTC+3)",
+      logoSvg: '<svg viewBox="0 0 40 40" width="40" height="40"><rect width="40" height="40" rx="10" fill="#7C3AED"/><circle cx="20" cy="20" r="8" stroke="#FFFFFF" stroke-width="3" fill="none"/><circle cx="20" cy="20" r="3" fill="#F472B6"/></svg>',
       category: "design", type: "Part-time", location: "Remote · Kenya",
       pay: { currency: "KES", min: 60000, unit: "MONTH" }, tz: "east", countries: ["KE"],
       posted: 12, featured: false, status: "approved", applicants: 71,
@@ -318,7 +318,8 @@
     {
       id: "t-1",
       name: "Kelvin Mutua",
-      location: "Nairobi, Kenya 🇰🇪",
+      location: "Nairobi, Kenya",
+      flag: "KE",
       role: "Frontend Engineer",
       company: "Sendwave Labs",
       avatar: "KM",
@@ -330,7 +331,8 @@
     {
       id: "t-2",
       name: "Aisha Mohamed",
-      location: "Mombasa, Kenya 🇰🇪",
+      location: "Mombasa, Kenya",
+      flag: "KE",
       role: "Customer Success Associate",
       company: "Lipa Later",
       avatar: "AM",
@@ -342,7 +344,8 @@
     {
       id: "t-3",
       name: "Brian Otieno",
-      location: "Kisumu, Kenya 🇰🇪",
+      location: "Kisumu, Kenya",
+      flag: "KE",
       role: "Virtual Assistant",
       company: "Bridge Partners",
       avatar: "BO",
@@ -354,7 +357,8 @@
     {
       id: "t-4",
       name: "Chidinma Okafor",
-      location: "Lagos, Nigeria 🇳🇬",
+      location: "Lagos, Nigeria",
+      flag: "NG",
       role: "Product Designer",
       company: "Andela Studio",
       avatar: "CO",
@@ -378,17 +382,21 @@
     const cat = CATEGORIES[Math.floor(r() * CATEGORIES.length)].id, g = GEN[cat];
     const tz = pick(Object.keys(GEN_LOCATIONS));
     const tags = [...new Set([pick(g.tags), pick(g.tags), pick(g.tags)])];
-    const flags = ["🇰🇪", "🇳🇬", "🇷🇼", "🇿🇦", "🇬🇭", "🌍"];
+    const flags = ["KE", "NG", "RW", "ZA", "GH", "GLOBAL"];
+    const comp = pick(GEN_COMPANIES);
+    const col = pick(GEN_COLORS);
+    const selectedFlag = pick(flags);
     let pay;
     if (r() < 0.45) { const min = (3 + Math.floor(r() * 25)) * 5000; pay = { currency: "KES", min, max: min + (1 + Math.floor(r() * 6)) * 10000, unit: "MONTH" }; }
     else if (r() < 0.5) { const min = 5 + Math.floor(r() * 30); pay = { currency: "USD", min, max: min + 5 + Math.floor(r() * 15), unit: "HOUR" }; }
     else { const min = (4 + Math.floor(r() * 30)) * 100; pay = { currency: "USD", min, max: min + (2 + Math.floor(r() * 10)) * 100, unit: "MONTH" }; }
     return {
-      id: "g-" + n, title: pick(g.titles), company: pick(GEN_COMPANIES), color: pick(GEN_COLORS),
+      id: "g-" + n, title: pick(g.titles), company: comp, color: col,
       category: cat, type: pick(TYPES), location: GEN_LOCATIONS[tz], pay, tz,
       posted: Math.floor(n / JOBS_PER_DAY), featured: r() < 0.06, status: "approved",
       applicants: Math.floor(r() * 180), tags, summary: GEN_SUMMARY[cat], ...DEFAULT_LIST, generated: true,
-      verified: true, flag: pick(flags), tzOverlap: GEN_LOCATIONS[tz].replace("Remote · ", ""),
+      verified: true, flag: selectedFlag, tzOverlap: GEN_LOCATIONS[tz].replace("Remote · ", ""),
+      logoSvg: (window.KaziIcons ? window.KaziIcons.company(comp, col) : null),
     };
   }
 

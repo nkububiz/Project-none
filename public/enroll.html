@@ -18,12 +18,12 @@
   <main class="container">
     <div class="hotline-banner">
       <div>
-        <strong>📞 Need help with enrollment or payment?</strong>
+        <strong style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Need help with enrollment or payment?</strong>
         <span class="muted" style="margin-left:6px">Call or WhatsApp our support line: <strong>0183 036 639</strong></span>
       </div>
       <div class="hotline-links">
-        <a class="hotline-pill" href="tel:0183036639">📞 Call 0183 036 639</a>
-        <a class="hotline-pill" style="background:#22c55e" href="https://wa.me/254183036639?text=Hi%20KaziRemote%20Team%2C%20I%20need%20help%20with%20enrollment" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="hotline-pill" href="tel:0183036639"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Call 0183 036 639</a>
+        <a class="hotline-pill" style="background:#22c55e" href="https://wa.me/254183036639?text=Hi%20KaziRemote%20Team%2C%20I%20need%20help%20with%20enrollment" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff" class="k-icon"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.17 8.17 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.01-1.24-.74-.66-1.25-1.48-1.39-1.73-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"/></svg> WhatsApp</a>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
     <div class="field" id="country-selector-box" style="margin-bottom:14px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
         <label style="font-size:.9rem;font-weight:700;margin:0">Select your country / payment currency:</label>
-        <span class="muted" style="font-size:.8rem">Click your flag to set local checkout</span>
+        <span class="muted" style="font-size:.8rem">Click your country to set local checkout</span>
       </div>
       <div class="country-selector" id="country-pills"></div>
     </div>
@@ -45,14 +45,14 @@
     <!-- Active selected country confirmation bar (appears after selecting, selector disappears) -->
     <div id="selected-country-bar" style="display:none;margin-bottom:18px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
       <div style="display:flex;align-items:center;gap:10px">
-        <span id="selected-country-flag" style="font-size:1.4rem">🇰🇪</span>
+        <span id="selected-country-flag" class="flag-badge" style="width:26px;height:18px"></span>
         <div>
           <strong id="selected-country-title" style="font-size:.96rem">Checkout for Kenya (KES 500)</strong>
           <span class="muted" style="font-size:.82rem;display:block" id="selected-country-sub">M-Pesa Buy Goods · Till 4374253</span>
         </div>
       </div>
-      <button type="button" class="btn btn-ghost btn-sm" id="btn-change-country" style="font-size:.82rem;padding:6px 12px;border:1px solid var(--line)">
-        🌍 Change Country
+      <button type="button" class="btn btn-ghost btn-sm" id="btn-change-country" style="font-size:.82rem;padding:6px 12px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Change Country
       </button>
     </div>
 
@@ -61,7 +61,7 @@
 
       <aside class="sticky">
         <div class="mpesa-card" id="gateway-card">
-          <div class="label" id="side-gateway-label">Lipa na M-Pesa · Buy Goods</div>
+          <div class="label" id="side-gateway-label" style="display:flex;align-items:center;gap:6px">Lipa na M-Pesa · Buy Goods</div>
           <div class="till"><span id="till"></span><button type="button" id="copy-till">Copy</button></div>
           <div style="font-size:.95rem;font-weight:700;letter-spacing:.02em"><span id="side-id-label">Store:</span> <span id="till-name"></span></div>
           <div style="opacity:.85;font-size:.82rem;margin-top:2px" id="side-gateway-note">Safaricom phone prompt will display this exact store name</div>
@@ -70,15 +70,15 @@
         <div class="panel" style="margin-top:16px;padding:20px">
           <strong style="font-family:var(--font-display)">What you get</strong>
           <div class="perk-list">
-            <div class="perk"><span class="ico">📨</span><span>Unlimited applications to reviewed remote jobs</span></div>
-            <div class="perk"><span class="ico">🔔</span><span>Instant WhatsApp / Telegram alerts for new roles</span></div>
-            <div class="perk"><span class="ico">⚡</span><span>Direct employer delivery &amp; verified candidate profile</span></div>
-            <div class="perk"><span class="ico">🛡️</span><span>Verified employers only — zero scams &amp; zero agency cuts</span></div>
+            <div class="perk"><span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>Unlimited applications to reviewed remote jobs</span></div>
+            <div class="perk"><span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><span>Instant WhatsApp / Telegram alerts for new roles</span></div>
+            <div class="perk"><span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span><span>Direct employer delivery &amp; verified candidate profile</span></div>
+            <div class="perk"><span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span><span>Verified employers only — zero scams &amp; zero agency cuts</span></div>
           </div>
         </div>
         <div class="panel" style="margin-top:16px;padding:20px;background:color-mix(in srgb, #059669 8%, var(--surface));border-color:color-mix(in srgb, #059669 30%, transparent)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-            <span style="font-size:1.4rem">🛡️</span>
+            <span class="k-icon" style="color:#059669;font-size:1.6rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
             <strong style="color:#059669;font-size:.95rem">100% Anti-Scam &amp; Refund Guarantee</strong>
           </div>
           <p style="font-size:.84rem;color:var(--ink-2);margin:0;line-height:1.45">
@@ -91,6 +91,7 @@
 
   <footer id="site-footer"></footer>
 
+  <script src="/js/icons.js"></script>
   <script src="/js/data.js"></script>
   <script src="/js/app.js"></script>
   <script>
@@ -99,7 +100,9 @@
 
       function updateSelectedCountryBar() {
         const reg = S.getCountryPayment(S.selectedCountry());
-        if (K.$("#selected-country-flag")) K.$("#selected-country-flag").textContent = reg.flag;
+        if (K.$("#selected-country-flag")) {
+          K.$("#selected-country-flag").innerHTML = window.KaziIcons ? window.KaziIcons.flag(reg.code) : "";
+        }
         if (K.$("#selected-country-title")) K.$("#selected-country-title").textContent = `Checkout for ${reg.country} (${reg.feeDisplay})`;
         if (K.$("#selected-country-sub")) K.$("#selected-country-sub").textContent = `${reg.gateway} · ${reg.identifierLabel}: ${reg.identifierValue}`;
       }
@@ -126,10 +129,11 @@
         const payments = S.regionalPayments;
         wrap.innerHTML = Object.values(payments).map((p) => {
           const active = p.code === curr ? "active" : "";
+          const flagSvg = window.KaziIcons ? window.KaziIcons.flag(p.code) : "";
           return `
             <button type="button" class="country-pill ${active}" data-country="${p.code}">
-              <span style="display:flex;align-items:center;gap:6px">
-                <span class="pill-flag">${p.flag}</span>
+              <span style="display:flex;align-items:center;gap:8px">
+                <span class="flag-badge">${flagSvg}</span>
                 <span>${K.esc(p.country)}</span>
               </span>
               <span class="pill-fee">${p.feeDisplay}</span>
@@ -149,7 +153,8 @@
 
       function updateSideCard() {
         const reg = S.getCountryPayment(S.selectedCountry());
-        K.$("#side-gateway-label").textContent = `${reg.flag} ${reg.gateway}`;
+        const flagSvg = window.KaziIcons ? window.KaziIcons.flag(reg.code) : "";
+        K.$("#side-gateway-label").innerHTML = `<span style="display:inline-flex;align-items:center;gap:6px">${flagSvg} <span>${K.esc(reg.gateway)}</span></span>`;
         K.$("#till").textContent = reg.identifierValue;
         K.$("#side-id-label").textContent = reg.identifierLabel + ":";
         K.$("#till-name").textContent = S.config.TILL_NAME;
@@ -159,13 +164,15 @@
       }
 
       function getPaymentInstructions(reg) {
+        const zapIcon = window.KaziIcons ? window.KaziIcons.icon("zap", 16) : "";
+        const cardIcon = window.KaziIcons ? window.KaziIcons.icon("creditCard", 16) : "";
         if (reg.code === "KE") {
           return `
             <h2 style="font-size:1.45rem">1 · Lipa na M-Pesa (Kenya)</h2>
             <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
               <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
                 <div>
-                  <strong style="font-size:1.05rem;color:var(--brand)">⚡ Instant M-Pesa STK Push</strong>
+                  <strong style="font-size:1.05rem;color:var(--brand);display:inline-flex;align-items:center;gap:6px">${zapIcon} Instant M-Pesa STK Push</strong>
                   <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Prompt appears on your phone automatically — zero wait verification.</p>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Trigger Phone Prompt →</button>
@@ -184,7 +191,7 @@
             <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
               <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
                 <div>
-                  <strong style="font-size:1.05rem;color:var(--brand)">⚡ Instant MoMo Push</strong>
+                  <strong style="font-size:1.05rem;color:var(--brand);display:inline-flex;align-items:center;gap:6px">${zapIcon} Instant MoMo Push</strong>
                   <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Sends prompt directly to your phone number for approval.</p>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Trigger MoMo Prompt →</button>
@@ -217,7 +224,7 @@
             <div style="background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px">
               <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
                 <div>
-                  <strong style="font-size:1.05rem;color:var(--brand)">💳 Instant 256-bit Secure Card Checkout</strong>
+                  <strong style="font-size:1.05rem;color:var(--brand);display:inline-flex;align-items:center;gap:6px">${cardIcon} Instant 256-bit Secure Card Checkout</strong>
                   <p style="margin:2px 0 0;font-size:.85rem;color:var(--ink-2)">Visa, MasterCard, or Apple Pay (${reg.feeDisplay}).</p>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" id="btn-stk-push">Pay $4.00 Card →</button>
@@ -235,11 +242,13 @@
         const user = S.currentUser();
         const status = S.enrollment();
         const reg = S.getCountryPayment(S.selectedCountry());
+        const checkIcon = window.KaziIcons ? window.KaziIcons.icon("checkCircle", 26) : "";
+        const hourglassIcon = window.KaziIcons ? window.KaziIcons.icon("hourglass", 26) : "";
 
         if (status === "active") {
           panel.innerHTML = `
             <div class="status-box active">
-              <span style="font-size:1.6rem">✅</span>
+              <span class="k-icon" style="color:var(--success);display:inline-flex;align-items:center">${checkIcon}</span>
               <div>
                 <strong>You're enrolled, ${K.esc(user.name.split(" ")[0])}!</strong>
                 <p style="margin:2px 0 0">Every remote role on KaziRemote is open to you with 100% direct salary delivery.</p>
@@ -257,7 +266,7 @@
         if (status === "pending") {
           panel.innerHTML = `
             <div class="status-box pending">
-              <span style="font-size:1.6rem">⏳</span>
+              <span class="k-icon" style="color:var(--warning);display:inline-flex;align-items:center">${hourglassIcon}</span>
               <div>
                 <strong>We've received your payment details.</strong>
                 <p style="margin:2px 0 0">Our team is verifying your transaction code against our ${reg.gateway} statement. You will be able to apply the moment it's verified.</p>
@@ -313,7 +322,7 @@
 
           // Duplicate payment code detection
           if (S.isDuplicateCode(code)) {
-            K.toast("⚠️ This transaction code has already been submitted or verified. Please check your SMS.");
+            K.toast("This transaction code has already been submitted or verified. Please check your SMS.");
             return;
           }
 

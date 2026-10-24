@@ -15,7 +15,16 @@
     google: '<svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>',
     verified: '<svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" style="display:inline-block;vertical-align:-1px"><path d="M8 0L1.5 3v5c0 4.14 2.77 7.99 6.5 9 3.73-1.01 6.5-4.86 6.5-9V3L8 0zm-1 11.5l-3.5-3.5 1.41-1.41L7 8.67l4.59-4.59L13 5.5l-6 6z"/></svg>',
     close: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
-    pin: "📍", clock: "🕒", briefcase: "💼",
+    pin: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    clock: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    briefcase: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+    clipboard: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>',
+    shield: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>',
+    fileText: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    bell: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
+    checkCircle: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    hourglass: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="k-icon"><path d="M5 22h14M5 2h14M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>',
   };
 
   // ---------- Theme ----------
@@ -52,7 +61,7 @@
       const apps = S.applications();
       slot.innerHTML = `
         <div style="display:flex;align-items:center;gap:8px">
-          <button class="btn btn-ghost btn-sm" id="btn-my-apps" title="View your submitted job applications">📋 My Applications <span class="badge badge-brand">${apps.length}</span></button>
+          <button class="btn btn-ghost btn-sm" id="btn-my-apps" title="View your submitted job applications">${ICONS.clipboard} My Applications <span class="badge badge-brand">${apps.length}</span></button>
           <button class="user-chip" id="user-chip" title="Sign out"><span class="avatar">${esc(user.initials)}</span><span class="hide-sm">${esc(user.name.split(" ")[0])}</span>${badge}</button>
         </div>`;
       $("#user-chip").onclick = () => { S.signOut(); toast("Signed out"); renderAuth(); document.dispatchEvent(new CustomEvent("kazi:auth")); };
@@ -156,13 +165,14 @@
   function jobCard(job) {
     const logoContent = job.logoSvg
       ? `<span class="company-logo-svg">${job.logoSvg}</span>`
-      : `<span class="company-logo" style="background:${esc(job.color || "#555")}">${esc(initials(job.company))}</span>`;
+      : `<span class="company-logo-svg">${window.KaziIcons ? window.KaziIcons.company(job.company, job.color) : `<span class="company-logo" style="background:${esc(job.color || "#555")}">${esc(initials(job.company))}</span>`}</span>`;
 
     const verifiedTag = job.verified !== false
       ? `<span class="badge badge-verified">${ICONS.verified} Verified Employer</span>`
       : "";
 
     const salaryDisp = S.formatSalaryForJob(job.pay) || esc(job.salary);
+    const flagHtml = window.KaziIcons ? `<span class="flag-badge">${window.KaziIcons.flag(job.flag)}</span>` : "";
 
     return `
       <button class="job-card ${job.featured ? "featured" : ""}" data-job="${esc(job.id)}">
@@ -174,7 +184,7 @@
           </div>
           <span class="job-meta">
             <strong style="color:var(--ink)">${esc(job.company)}</strong>
-            <span>${job.flag || "🌍"} ${esc(job.location)}</span>
+            <span>${flagHtml}${esc(job.location)}</span>
             <span>${ICONS.briefcase} ${esc(job.type)}</span>
             ${job.tzOverlap ? `<span>${ICONS.clock} ${esc(job.tzOverlap)}</span>` : ""}
           </span>
@@ -204,7 +214,7 @@
       <div class="dialog-head">
         <div>
           <h2 style="font-size:1.35rem;margin:0">Verified Resume Preview</h2>
-          <p class="muted" style="margin:4px 0 0;font-size:.85rem">📄 ${esc(cvName)} · Candidate: <strong>${esc(candidateName)}</strong></p>
+          <p class="muted" style="margin:4px 0 0;font-size:.85rem"><span class="k-icon">${ICONS.fileText}</span> ${esc(cvName)} · Candidate: <strong>${esc(candidateName)}</strong></p>
         </div>
         <button class="icon-btn dialog-close" aria-label="Close" data-act="close">${ICONS.close}</button>
       </div>
@@ -240,7 +250,7 @@
         </div>
       </div>
       <div class="dialog-foot">
-        <a class="btn btn-primary btn-sm" href="tel:0183036639">📞 Call Candidate (0183 036 639)</a>
+        <a class="btn btn-primary btn-sm" href="tel:0183036639"><span class="k-icon">${ICONS.phone}</span> Call Candidate (0183 036 639)</a>
         <button class="btn btn-ghost btn-sm" data-act="close">Close Preview</button>
       </div>`;
     d.onclick = (e) => {
@@ -315,7 +325,7 @@
           email: u ? u.email : "seeker@kaziremote.africa"
         });
         overlay.remove();
-        toast(`✅ Instant Payment Verified! Transaction code: ${record.code}`);
+        toast(`Instant Payment Verified! Transaction code: ${record.code}`);
         if (typeof onSuccess === "function") onSuccess(record);
       }, 2200);
     };
@@ -327,7 +337,7 @@
     d.innerHTML = `
       <div class="dialog-head">
         <div>
-          <h2 style="font-size:1.35rem;margin:0">🔔 Instant Job Alerts</h2>
+          <h2 style="font-size:1.35rem;margin:0"><span class="k-icon" style="color:var(--brand)">${ICONS.bell}</span> Instant Job Alerts</h2>
           <p class="muted" style="margin:4px 0 0;font-size:.85rem">Get WhatsApp or Telegram notifications the minute high-paying remote roles are posted.</p>
         </div>
         <button class="icon-btn dialog-close" aria-label="Close" data-act="close">${ICONS.close}</button>
@@ -339,11 +349,11 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
               <label style="display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:10px;cursor:pointer">
                 <input type="radio" name="alert_channel" value="whatsapp" checked />
-                <span>📱 WhatsApp Alert</span>
+                <span style="display:flex;align-items:center;gap:6px">${window.KaziIcons ? window.KaziIcons.get("whatsapp") : ""} WhatsApp Alert</span>
               </label>
               <label style="display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:10px;cursor:pointer">
                 <input type="radio" name="alert_channel" value="telegram" />
-                <span>✈️ Telegram Alert</span>
+                <span style="display:flex;align-items:center;gap:6px">${window.KaziIcons ? window.KaziIcons.get("telegram") : ""} Telegram Alert</span>
               </label>
             </div>
           </div>
@@ -378,7 +388,7 @@
         const cat = $("#alert-category", form)?.value;
         if (!dest) return toast("Please enter your phone or username.");
         S.subscribeAlert({ channel: ch, destination: dest, category: cat });
-        toast(`🔔 Subscribed! You will receive new remote job alerts on ${ch}.`);
+        toast(`Subscribed! You will receive new remote job alerts on ${ch}.`);
         d.close();
       };
     }
@@ -413,7 +423,7 @@
         <div class="application-tracker-box">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
             <strong style="color:var(--ink);font-size:.95rem">Application Status: <span class="badge badge-brand">${appRecord.status.replace("_", " ").toUpperCase()}</span></strong>
-            <span class="muted" style="font-size:.85rem">CV Attached: 📄 ${esc(appRecord.cvName || "CV.pdf")}</span>
+            <span class="muted" style="font-size:.85rem">CV Attached: <span class="k-icon">${ICONS.fileText}</span> ${esc(appRecord.cvName || "CV.pdf")}</span>
           </div>
           <p style="font-size:.88rem;color:var(--ink-2);margin-bottom:12px">Your profile and CV were forwarded directly to the hiring manager at <strong>${esc(job.company)}</strong>. No middlemen, no agency wage deductions.</p>
           <div class="status-pipeline">
@@ -441,7 +451,7 @@
             </div>
             <div class="field"><label style="font-size:.82rem">Attached Resume / CV</label>
               <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface);border:1px dashed var(--line);border-radius:10px">
-                <span style="font-size:1.2rem">📄</span>
+                <span class="k-icon" style="color:var(--brand);font-size:1.3rem">${ICONS.fileText}</span>
                 <span id="cv-filename" style="font-weight:600;font-size:.88rem;flex:1">Amani_Wekesa_Resume_2026.pdf</span>
                 <span class="badge badge-brand">Ready</span>
               </div>
@@ -458,7 +468,7 @@
     } else if (status === "pending") {
       ctaSection = `
         <div class="status-box pending">
-          <span>⏳</span>
+          <span class="k-icon" style="color:var(--warn);font-size:1.5rem">${ICONS.hourglass}</span>
           <div>
             <strong>M-Pesa payment under review.</strong>
             <p style="margin:2px 0 0;font-size:.88rem">Our admin team is verifying your transaction code with Till ${S.config.TILL_NUMBER}. Once verified, application buttons unlock immediately.</p>
@@ -477,7 +487,9 @@
 
     const logoHtml = job.logoSvg
       ? `<span class="company-logo-svg" style="width:52px;height:52px">${job.logoSvg}</span>`
-      : `<span class="company-logo" style="background:${esc(job.color)}">${esc(initials(job.company))}</span>`;
+      : `<span class="company-logo-svg" style="width:52px;height:52px">${window.KaziIcons ? window.KaziIcons.company(job.company, job.color) : `<span class="company-logo" style="background:${esc(job.color)}">${esc(initials(job.company))}</span>`}</span>`;
+
+    const flagBadge = window.KaziIcons ? `<span class="flag-badge">${window.KaziIcons.flag(job.flag)}</span>` : "";
 
     d.innerHTML = `
       <div class="dialog-head">
@@ -489,7 +501,7 @@
           </div>
           <div class="muted" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:.9rem">
             <strong>${esc(job.company)}</strong>
-            <span>${job.flag || "🌍"} ${esc(job.location)}</span>
+            <span>${flagBadge}${esc(job.location)}</span>
             ${job.website ? `<a href="${esc(job.website)}" target="_blank" rel="noopener noreferrer" style="color:var(--brand);text-decoration:none;font-weight:600">Company website ↗</a>` : ""}
           </div>
         </div>
@@ -505,7 +517,7 @@
         </div>
 
         <div class="anti-scam-callout">
-          <span>🛡️</span>
+          <span class="k-icon" style="color:#059669;font-size:1.6rem">${ICONS.shield}</span>
           <div>
             <strong>Verified Direct Employer Listing</strong>
             <p>Every role is verified with the employer. Candidates are reviewed by real hiring managers with zero agency commission cuts. Need help? Call or WhatsApp our helpline at <span style="white-space:nowrap"><strong>0183 036 639</strong>.</span></p>
@@ -583,7 +595,7 @@
                 <span class="badge ${badgeClass}">${esc(a.status.replace("_", " ").toUpperCase())}</span>
               </div>
               <div style="margin:10px 0;font-size:.85rem;color:var(--ink-2)">
-                <span>Attached Resume: 📄 <b>${esc(a.cvName)}</b></span>
+                <span>Attached Resume: <span class="k-icon">${ICONS.fileText}</span> <b>${esc(a.cvName)}</b></span>
                 ${a.linkedin ? ` · <a href="${esc(a.linkedin)}" target="_blank" rel="noopener" style="color:var(--brand)">LinkedIn Profile</a>` : ""}
               </div>
               <div class="status-pipeline" style="margin-top:12px">
